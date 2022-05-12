@@ -54,7 +54,7 @@ async function run(client) {
 
         spreadsheetId: `${process.env.SHEETS_KEY}`,
         // change this range to the table's size
-        range: 'Sheet1!A1:D4'
+        range: 'Sheet1!A1:E5'
     }
 
     let data = await sheetsapi.spreadsheets.values.get(opt);

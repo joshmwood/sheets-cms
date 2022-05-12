@@ -21,16 +21,11 @@ async function renderAlbums() {
         let albumDiv = document.createElement("li")
         albumDiv.classList.add("album-row");
 
-        let albumRank = document.createElement("div");
-        albumRank.classList.add("album-rank");
-        let rank = `#${i}`;
-        albumRank.textContent = rank;
-        albumDiv.appendChild(albumRank);
 
         let albumImage = document.createElement("div");
         albumImage.classList.add("album-image");
         let img = document.createElement("img");
-        img.src = `img/pinkfloydanimals.jpg`;
+        img.src = `/img/${albumData[i][4]}`;
         albumImage.appendChild(img)
         albumDiv.appendChild(albumImage);
 
