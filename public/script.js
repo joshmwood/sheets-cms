@@ -19,26 +19,27 @@ async function renderAlbums() {
     for (let i = 1; i < albumData.length; i++) {
 
         let albumDiv = document.createElement("li")
-        albumDiv.classList.add("album-row");
+        albumDiv.classList.add("album");
 
 
-        let albumImage = document.createElement("div");
-        albumImage.classList.add("album-image");
+        // let albumImage = document.createElement("div");
+        // albumImage.classList.add("album-image");
         let img = document.createElement("img");
         img.src = `/img/${albumData[i][4]}`;
-        albumImage.appendChild(img)
-        albumDiv.appendChild(albumImage);
+        img.classList.add("album--image")
+        // albumImage.appendChild(img)
+        albumDiv.appendChild(img);
 
         let albumInfo = document.createElement("div");
-        albumInfo.classList.add("album-info");
+        albumInfo.classList.add("album--info");
 
         let albumTitle = document.createElement("h1");
-        albumTitle.classList.add("album-title")
+        albumTitle.classList.add("album--title")
         albumTitle.textContent = albumData[i][0];
         albumInfo.appendChild(albumTitle);
 
         let artistTitle = document.createElement("h2");
-        artistTitle.classList.add("title");
+        artistTitle.classList.add("album--artist-title");
         artistTitle.textContent = albumData[i][1];
         albumInfo.appendChild(artistTitle);
         albumDiv.appendChild(albumInfo);
@@ -51,7 +52,7 @@ async function renderAlbums() {
         albumInfo.appendChild(albumGenre);
 
         let reviewSentence = document.createElement("p");
-        reviewSentence.classList.add("review-sentence")
+        reviewSentence.classList.add("album--review")
         reviewSentence.textContent = `this was a good album!`;
         albumInfo.appendChild(reviewSentence);
 
