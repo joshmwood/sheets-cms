@@ -1,6 +1,17 @@
+:root {
+    --font-dark: #181818;
+    --primary-color: #d5c1f7;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-color: #d5c1f7;
     font-family: 'Montserrat', sans-serif;
+    color: var(--font-dark);
+    box-sizing: border-box;
 }
 
 .header {
@@ -9,13 +20,42 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: white;
+    max-width: 900px;
+    margin: 30px auto 30px;
 }
 
 .header--title {
+    font-size: 48px;
     margin-bottom: 20px;
 }
 
 .header--nav {}
+
+.sorting-buttons {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: white;
+    margin-bottom: 20px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sorting-buttons--btn {
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--font-dark);
+    font-size: 12x;
+    padding: 0.8em;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.sorting-buttons--btn:hover {
+    background-color: #a697c0;
+}
 
 .album-list-container {
     max-width: 900px;
@@ -27,7 +67,7 @@ body {
     display: flex;
     flex-direction: row;
     background-color: #fefefe;
-    max-width: 800px;
+    max-width: 100%;
     margin-bottom: 22px
 }
 
