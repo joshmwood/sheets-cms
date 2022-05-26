@@ -6,44 +6,49 @@ async function getAlbums() {
     return json;
 }
 
-getAlbums();
+// takes in sorting function to determine sorting order
+async function renderAlbums(method = sortByArtistTitle) {
+    let albumData = await getAlbums();
 
-async function renderAlbums() {
-    const albumData = await getAlbums();
+    // clear the container
+    let container = document.getElementById("albumListContainer");
+    container.innerHTML = "";
+
+
     // render each row
     let albumList = document.createElement("ol");
-    let albumDiv = document.createElement("li")
-    albumDiv.classList.add("album-row");
+    // albumData = sortByScore(albumData);
+    albumData = method(albumData);
 
-    // start at index[1] because index[0] is the row containing column names
-    for (let i = 1; i < albumData.length; i++) {
+    for (let i = 0; i < albumData.length; i++) {
 
         let albumDiv = document.createElement("li")
         albumDiv.classList.add("album");
 
 
-        // let albumImage = document.createElement("div");
-        // albumImage.classList.add("album-image");
+        // album cover
         let img = document.createElement("img");
         img.src = `/img/${albumData[i][4]}`;
         img.classList.add("album--image")
-        // albumImage.appendChild(img)
         albumDiv.appendChild(img);
 
         let albumInfo = document.createElement("div");
         albumInfo.classList.add("album--info");
 
+        // album title
         let albumTitle = document.createElement("h1");
         albumTitle.classList.add("album--title")
         albumTitle.textContent = albumData[i][0];
         albumInfo.appendChild(albumTitle);
 
+        // artist title
         let artistTitle = document.createElement("h2");
         artistTitle.classList.add("album--artist-title");
         artistTitle.textContent = albumData[i][1];
         albumInfo.appendChild(artistTitle);
         albumDiv.appendChild(albumInfo);
 
+        // genre(s)
         let albumGenre = document.createElement("div")
         albumGenre.classList.add("genre");
         let span = document.createElement("span");
@@ -51,11 +56,15 @@ async function renderAlbums() {
         albumGenre.appendChild(span);
         albumInfo.appendChild(albumGenre);
 
+        // review
         let reviewSentence = document.createElement("p");
         reviewSentence.classList.add("album--review")
-        reviewSentence.textContent = `this was a good album!`;
-        albumInfo.appendChild(reviewSentence);
+        if (albumData[i][5]) {
+            reviewSentence.textContent = `"${albumData[i][5]}"`
+            albumInfo.appendChild(reviewSentence);
+        }
 
+        //score
         albumScore = document.createElement("div");
         albumScore.classList.add("score");
         let div = document.createElement("div");
@@ -67,9 +76,74 @@ async function renderAlbums() {
     }
 
 
-    let container = document.getElementById("albumListContainer");
     container.appendChild(albumList);
 }
 
-renderAlbums();
+function sortByScore(albumData) {
+    console.log(albumData);
+    albumData.sort((a, b) => {
+        const scoreA = parseInt(a[3]);
+        const scoreB = parseInt(b[3]);
+        return scoreB - scoreA;
+    })
+    console.log(albumData);
+    return albumData;
+}
 
+function sortByArtistTitle(albumData) {
+    console.log(albumData);
+    albumData.sort((a, b) => {
+        const artistA = a[1].toUpperCase();
+        const artistB = b[1].toUpperCase();
+
+        if (artistA < artistB) {
+            return -1;
+        }
+        if (artistA > artistB) {
+            return 1;
+        }
+        return 0;
+    })
+    console.log(albumData);
+    return albumData;
+}
+
+function sortByAlbumTitle(albumData) {
+    console.log(albumData);
+    albumData.sort((a, b) => {
+        const albumA = a[0].toUpperCase();
+        const albumB = b[0].toUpperCase();
+
+        if (albumA < albumB) {
+            return -1;
+        }
+        if (albumA > albumB) {
+            return 1;
+        }
+        return 0;
+    })
+    console.log(albumData);
+    return albumData;
+}
+
+renderAlbums(sortByScore);
+
+function sortByScoreButton() {
+    renderAlbums(sortByScore);
+}
+
+function sortByArtistButton() {
+    renderAlbums(sortByArtistTitle);
+}
+
+function sortByAlbumButton() {
+    renderAlbums(sortByAlbumTitle);
+}
+
+
+const scoreButton = document.getElementById("sortByScore");
+const artistButton = document.getElementById("sortByArtist");
+const albumButton = document.getElementById("sortByAlbum");
+scoreButton.addEventListener("click", sortByScoreButton);
+artistButton.addEventListener("click", sortByArtistButton);
+albumButton.addEventListener("click", sortByAlbumButton);
