@@ -1,3 +1,4 @@
+let albums = [];
 async function getAlbums() {
     const response = await fetch('/albums');
     console.log(response);
@@ -8,8 +9,11 @@ async function getAlbums() {
 
 // takes in sorting function to determine sorting order
 async function renderAlbums(method = sortByArtistTitle) {
-    let albumData = await getAlbums();
-
+    if (albums.length == 0) {
+        let albumData = await getAlbums();
+        albums = albumData;
+    }
+    albumData = albums;
     // clear the container
     let container = document.getElementById("albumListContainer");
     container.innerHTML = "";
