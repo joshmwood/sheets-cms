@@ -93,8 +93,16 @@ function sortByScore(albumData) {
 function sortByArtistTitle(albumData) {
     console.log(albumData);
     albumData.sort((a, b) => {
-        const artistA = a[1].toUpperCase();
-        const artistB = b[1].toUpperCase();
+        let artistA = a[1].toUpperCase();
+        let artistB = b[1].toUpperCase();
+
+        // check if it begins with the word "The", and ignore it.
+        if (artistA.startsWith("THE ")) {
+            artistA = artistA.slice(4);
+        }
+        if (artistB.startsWith("THE ")) {
+            artistB = artistB.slice(4);
+        }
 
         if (artistA < artistB) {
             return -1;
