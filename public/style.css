@@ -57,6 +57,36 @@ body {
     background-color: #a697c0;
 }
 
+.filter-buttons {
+    display: flex;
+    max-width: 900px;
+    margin: 20px auto 20px;
+    background-color: white;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.filter-buttons label {
+    margin-right: 15px;
+}
+
+.filter-buttons--btn {
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--font-dark);
+    font-size: 12x;
+    padding: 0.8em;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.filter-buttons--btn:hover {
+    background-color: #a697c0;
+}
+
 .album-list-container {
     max-width: 900px;
     margin-left: auto;
