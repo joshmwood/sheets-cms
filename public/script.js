@@ -147,14 +147,21 @@ renderAlbums(sortByScore);
 
 function sortByScoreButton() {
     renderAlbums(sortByScore);
+    lastSorted = sortByScore;
 }
 
 function sortByArtistButton() {
     renderAlbums(sortByArtistTitle);
+    lastSorted = sortByArtistTitle;
 }
 
 function sortByAlbumButton() {
     renderAlbums(sortByAlbumTitle);
+    lastSorted = sortByAlbumTitle;
+}
+
+function applyFiltersButton() {
+    renderAlbums(lastSorted);
 }
 
 const scoreButton = document.getElementById("sortByScore");
@@ -164,7 +171,8 @@ const applyFilters = document.getElementById("applyFilters");
 scoreButton.addEventListener("click", sortByScoreButton);
 artistButton.addEventListener("click", sortByArtistButton);
 albumButton.addEventListener("click", sortByAlbumButton);
-applyFilters.addEventListener("click", sortByScoreButton);
+
+applyFilters.addEventListener("click", applyFiltersButton);
 
 let checkboxes = document.querySelectorAll("input[type=checkbox]");
 
@@ -189,3 +197,5 @@ checkboxes.forEach(ele => {
         }
     });
 })
+
+let lastSorted = sortByScore;

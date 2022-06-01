@@ -6,7 +6,6 @@ const path = require('path');
 require('dotenv').config();
 // replace "/n" with the actual newline character
 const privateKey = process.env.PRIVATE_KEY.replace(new RegExp("\\\\n", "\g"), "\n")
-console.log(privateKey);
 
 //port
 const port = process.env.PORT || 3000;
@@ -73,7 +72,4 @@ app.get('*', (req, res) => {
 
 app.listen(process.env.PORT, () => {
     console.log(`listening on port ${process.env.PORT}`)
-    console.log(`listening on port ${process.env.CLIENT_EMAIL}`)
-    console.log(`listening on port ${process.env.PRIVATE_KEY}`)
-
 })
