@@ -12,34 +12,55 @@
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="header">
-        <h1 class="header--title">ALBUMS</h1>
-        <p>A comprehensive list of every album I have ever listened to and my personal rating of them.</p>
-        <!-- <div class="header--nav">
-            <button class="header--nav--link">List View</button>
-            <button class="header--nav--link">Table View</button>
-        </div> -->
-    </div>
+    <div class="header-container">
+        <div class="header">
+            <h1 class="header--title">ALBUMS</h1>
+            <p class="header--subtitle">A comprehensive list of every album I have ever listened to and my personal rating of them.</p>
+            <!-- <div class="header--nav">
+                <button class="header--nav--link">List View</button>
+                <button class="header--nav--link">Table View</button>
+            </div> -->
+        </div>
 
-    <div class="sorting-buttons">
-        <button class="sorting-buttons--btn" id="sortByScore">Sort by Score</button>
-        <button class="sorting-buttons--btn" id="sortByArtist">Sort by Artist</button>
-        <button class="sorting-buttons--btn" id="sortByAlbum">Sort by Album Title</button>
-    </div>
-    <div class="filter-buttons">
-        <input type="checkbox" id="rock" name="rock" value="Rock" checked>
-        <label for="rock">Rock</label>
-        <input type="checkbox" id="hiphop" name="hiphop" value="Hip Hop" checked>
-        <label for="hiphop">Hip Hop</label>
-        <input type="checkbox" id="emo" name="emo" value="Emo" checked>
-        <label for="emo">Emo</label>
-        <input type="checkbox" id="electronic" name="electronic" value="Electronic" checked>
-        <label for="electronic">Electronic</label>
-        <input type="checkbox" id="pop" name="pop" value="Pop" checked>
-        <label for="pop">Pop</label>
-        <input type="checkbox" id="jazz" name="jazz" value="Jazz" checked>
-        <label for="jazz">Jazz</label>
-        <button id="applyFilters" class="filter-buttons--btn">Apply Filters</button>
+        <div class="sorting-buttons">
+            <button class="sorting-buttons--btn" id="sortByScore">Sort by Score</button>
+            <button class="sorting-buttons--btn" id="sortByArtist">Sort by Artist</button>
+            <button class="sorting-buttons--btn" id="sortByAlbum">Sort by Album Title</button>
+        </div>
+        <div class="filter-buttons">
+            <div class="filter-buttons--checkboxes">
+                <div>
+                    <input type="checkbox" id="rock" name="rock" value="Rock" checked>
+                    <label for="rock">Rock</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="hiphop" name="hiphop" value="Hip Hop" checked>
+                    <label for="hiphop">Hip Hop</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="emo" name="emo" value="Emo" checked>
+                    <label for="emo">Emo</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="electronic" name="electronic" value="Electronic" checked>
+                    <label for="electronic">Electronic</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="pop" name="pop" value="Pop" checked>
+                    <label for="pop">Pop</label>
+                </div>
+
+                <div>
+                    <input type="checkbox" id="jazz" name="jazz" value="Jazz" checked>
+                    <label for="jazz">Jazz</label>
+                </div>
+            </div>
+            <button id="applyFilters" class="filter-buttons--btn">Apply&nbsp;Filters</button>
+        </div>
     </div>
     <div class="album-list-container" id="albumListContainer"></div>
 

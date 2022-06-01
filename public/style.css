@@ -12,6 +12,13 @@ body {
     font-family: 'Montserrat', sans-serif;
     color: var(--font-dark);
     box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.header-container {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .header {
@@ -21,15 +28,20 @@ body {
     justify-content: center;
     align-items: center;
     background-color: white;
-    max-width: 900px;
+    max-width: 95%;
     margin: 30px auto 30px;
     box-shadow: 0px 0px 8px 8px rgba(158, 158, 158, 0.2);
-
+    text-align: center;
 }
 
 .header--title {
     font-size: 48px;
     margin-bottom: 20px;
+}
+
+.header--subtitle {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0 10px;
 }
 
 .header--nav {}
@@ -40,11 +52,10 @@ body {
     padding: 10px;
     background-color: white;
     margin-bottom: 20px;
-    max-width: 900px;
+    max-width: 95%;
     margin-left: auto;
     margin-right: auto;
     box-shadow: 0px 0px 8px 8px rgba(158, 158, 158, 0.2);
-
 }
 
 .sorting-buttons--btn {
@@ -63,17 +74,31 @@ body {
 
 .filter-buttons {
     display: flex;
-    max-width: 900px;
+    flex-direction: row;
+    max-width: 95%;
     margin: 20px auto 20px;
     background-color: white;
     padding: 10px;
     justify-content: center;
     align-items: center;
     box-shadow: 0px 0px 8px 8px rgba(158, 158, 158, 0.2);
+}
 
+.filter-buttons--checkboxes {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 
 
+@media screen and (max-width: 700px) {
+
+    .filter-buttons {
+        font-size: 12px;
+    }
+}
 
 .filter-buttons label {
     margin-right: 15px;
@@ -87,6 +112,12 @@ body {
     padding: 0.8em;
     margin: 0 5px;
     cursor: pointer;
+}
+
+@media screen and (max-width: 700px) {
+    .filter-buttons--btn {
+        font-size: 12px;
+    }
 }
 
 .filter-buttons--btn:hover {
@@ -103,22 +134,54 @@ body {
     display: flex;
     flex-direction: row;
     background-color: #fefefe;
-    max-width: 100%;
+    max-width: 95%;
+    margin-right: auto;
+    margin-left: auto;
     margin-bottom: 22px;
     box-shadow: 0px 0px 8px 8px rgba(158, 158, 158, 0.2);
+    max-height: 200px;
 }
+
+@media screen and (max-width: 700px) {
+    .album {
+        max-height: 120px;
+        margin-bottom: 11px;
+    }
+
+}
+
 
 .album--image {
     width: 200px;
+}
+
+@media screen and (max-width: 700px) {
+    .album--image {
+        width: 120px;
+    }
 }
 
 .album--info {
     padding: 20px;
 }
 
+@media screen and (max-width: 700px) {
+
+    .album--info {
+        padding: 10px;
+    }
+}
+
 .album--title {
     font-family: 'Heebo', sans-serif;
     font-size: 38px;
+}
+
+@media screen and (max-width: 700px) {
+    .album--title {
+        font-size: 20px;
+    }
+
 }
 
 .album--artist-title {
@@ -127,6 +190,13 @@ body {
     color: gray;
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
+}
+
+@media screen and (max-width: 700px) {
+
+    .album--artist-title {
+        font-size: 13px;
+    }
 }
 
 .genre {
@@ -139,11 +209,26 @@ body {
     background-color: #d5c1f7;
 }
 
+@media screen and (max-width: 700px) {
+
+    .genre span {
+        font-size: 10px;
+        padding: 3px;
+    }
+}
+
 .album--review {
     margin-left: 20px;
     margin-top: 20px;
     font-family: Arial, Helvetica, sans-serif;
     font-style: italic;
+}
+
+@media screen and (max-width: 700px) {
+    .album--review {
+        display: none;
+    }
+
 }
 
 .score {
@@ -152,7 +237,15 @@ body {
     align-items: center;
     justify-content: center;
     margin-left: auto;
-    padding: 50px;
+    padding: 50px 25px 50px 0px;
+}
+
+@media screen and (max-width: 700px) {
+
+    .score {
+        font-size: 24px;
+        padding: 50px 10px 50px 0px;
+    }
 }
 
 .score div {
@@ -163,4 +256,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@media screen and (max-width: 700px) {
+
+    .score div {
+        width: 50px;
+        height: 50px;
+    }
 }
