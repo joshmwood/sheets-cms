@@ -4,13 +4,16 @@ const path = require('path');
 
 //dot env
 require('dotenv').config();
+// replace "/n" with the actual newline character
+const privateKey = process.env.PRIVATE_KEY.replace(new RegExp("\\\\n", "\g"), "\n")
+console.log(privateKey);
 
 //port
 const port = process.env.PORT || 3000;
 
 // google sheets
 const { google } = require('googleapis');
-const keys = require('./credentials.json');
+// const keys = require('./credentials.json');
 
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -29,7 +32,7 @@ app.get('/albums', async (req, res) => {
 
     const client = new google.auth.JWT(
 
-        keys.client_email, null, keys.private_key, ['https://www.googleapis.com/auth/spreadsheets']
+        process.env.CLIENT_EMAIL, null, privateKey, ['https://www.googleapis.com/auth/spreadsheets']
 
     )
     client.authorize(async (err, tokens) => {
@@ -70,4 +73,7 @@ app.get('*', (req, res) => {
 
 app.listen(process.env.PORT, () => {
     console.log(`listening on port ${process.env.PORT}`)
+    console.log(`listening on port ${process.env.CLIENT_EMAIL}`)
+    console.log(`listening on port ${process.env.PRIVATE_KEY}`)
+
 })
