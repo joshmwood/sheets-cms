@@ -36,7 +36,7 @@ async function renderAlbums(method = sortByArtistTitle) {
 
             // album cover
             let img = document.createElement("img");
-            img.src = `/img/${albumData[i][4]}`;
+            img.src = `https://raw.githubusercontent.com/joshmwood/album-images/main/img/${albumData[i][4]}`;
             img.classList.add("album--image")
             albumDiv.appendChild(img);
 
