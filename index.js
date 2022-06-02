@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
 
 // get request for albums from DOM, grabs from google sheets
 app.get('/albums', async (req, res) => {
-    console.log('request for albums');
+    console.log('request for ALBUMSDSDSDS');
     console.log(`post regEx: ${privateKey}`);
     console.log(process.env.CLIENT_EMAIL);
 
