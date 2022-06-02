@@ -5,7 +5,10 @@ const path = require('path');
 //dot env
 require('dotenv').config();
 // replace "/n" with the actual newline character
+console.log(`pre regEx: ${process.env.PRIVATE_KEY}`);
 const privateKey = process.env.PRIVATE_KEY.replace(new RegExp("\\\\n", "\g"), "\n")
+console.log(`post regEx: ${privateKey}`);
+console.log(process.env.CLIENT_EMAIL);
 
 //port
 const port = process.env.PORT || 3000;
@@ -28,6 +31,7 @@ app.get('/', (req, res) => {
 
 // get request for albums from DOM, grabs from google sheets
 app.get('/albums', async (req, res) => {
+    console.log('request for albums');
 
     const client = new google.auth.JWT(
 
@@ -36,7 +40,7 @@ app.get('/albums', async (req, res) => {
     )
     client.authorize(async (err, tokens) => {
         if (err) {
-            console.log(err);
+            console.log("error", err);
             return;
         }
         else {
