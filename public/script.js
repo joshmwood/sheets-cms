@@ -36,7 +36,13 @@ async function renderAlbums(method = sortByArtistTitle) {
 
             // album cover
             let img = document.createElement("img");
-            img.src = `https://raw.githubusercontent.com/joshmwood/album-images/main/img/${albumData[i][4]}`;
+            // in the event that the album image field isn't filled in, use a placeholder
+            if (albumData[i][4] != undefined) {
+                img.src = `https://raw.githubusercontent.com/joshmwood/album-images/main/img/${albumData[i][4]}`;
+            }
+            else {
+                img.src = '/img/albumplaceholder.jpg';
+            }
             img.classList.add("album--image")
             albumDiv.appendChild(img);
 
